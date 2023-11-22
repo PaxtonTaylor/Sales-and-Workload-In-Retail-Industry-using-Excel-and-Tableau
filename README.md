@@ -18,7 +18,7 @@ This dataset uses a free, copyleft license for software and other kinds of work 
 
 ## Data Exploration, Cleaning, and Analysis
 
-I cleaned raw data from a dataset with 2 different sheets available on Kaggle, analyzed that data in Excel, and created a data visualization for this data to make it easier to comprehend.
+I used Excel to clean raw data from a dataset with 2 different sheets and analyzed that data with using more intermediate and advanced Excel functions and practices.
 
 I performed the following data cleansing and analysis in Excel:
 - Removed text from a column using =RIGHT function.
@@ -31,3 +31,9 @@ I performed the following data cleansing and analysis in Excel:
 - Created a ratio calculation by dividing one column results from another column.
 - Used conditional formatting to highlight certain cells that were below, between, and above a determined mark.
 - Created 2 pivot tables to display certain data points much easier.
+
+
+You can download and view the raw, uncleaned data [here](https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/files/13433883/salesworkload_raw.xlsx).
+
+
+You can download and view my cleaned data with [here](https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/files/13433863/salesworkload_cleaned.xlsx).
