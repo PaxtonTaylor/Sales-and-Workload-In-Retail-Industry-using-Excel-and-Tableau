@@ -27,40 +27,12 @@ The second sheet opening_schemes contains 28 columns. The names of each column a
   -  10.2016 through 09.2017 - All 12 are General
 - Cumulated:
   -  10.2016 through 09.2017 - All 12 are General
-
-Next, I want to make the datatypes match the data I'm working with instead of most being General. I made the following changes so that when I upload this into a data visualization tool later, the datatypes won't be an issue to work around in the viz tool. I also renamed the columns so that they have more consistent format
-
-sales_figures column changes:
-- Month.Year - Text
-- Time Index - Number
-- Country - Text
-- Store ID - Number
-- City - Text
-- Dept. ID - Number
-- Dept. Name - Text
-- Hours Own - Number, changed from 3 decimal places to 2
-- Hours Lease - Number, added 2 decimal places
-- Sales Units - Number
-- Turnover - Number
-- Customer - General
-- Area (m2) - Number, kept 2 decimal places
-- Opening Hours - Text
-
-opening_schemes column changes:
-- Store ID - Number
-- Store Name - Text
-- Region - Text
-- Scheme - Text
-- Month-by-month:
-  -  10.2016 through 09.2017 - All Number
-- Cumulated:
-  -  10.2016 through 09.2017 - All Number
  
 ---
 
 Now I want to start to clean up the columns and eliminate any duplicates or irrelevant cells, rows, and/or columns.
 
-In the opening_schemes sheet, I need to correct the Store Name column by removing the ID on the left side of the column since id already has it’s own column.
+In the opening_schemes sheet, I need to correct the Store_name column by removing the id on the left side of the column since id already has its own column.
 
 <img width="281" alt="opening_schemes - Store_name with ID" src="https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/assets/147224800/007a8239-4754-4fda-b9ec-68577c36b87c">
 
@@ -68,19 +40,27 @@ I used the `=RIGHT(B7, LEN(B7) - 6)` function to pull only the store name and re
 
 <img width="381" alt="opening_schemes - Store Name (new)" src="https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/assets/147224800/8b04eabf-aa82-4f08-a468-e6b7d5277dec">
 
-I then hid the original column and renamed the new column just "Store Name".
+---
 
-<img width="228" alt="opening_schemes - Store Name - final" src="https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/assets/147224800/65ce1976-7c74-4d82-ba10-474dadad4969">
+In the sales_figures sheet, we have data from October 2016 - June 2017.
+
+In this sheet, looking at the columns data types, the HoursOwn column is set up as General instead of Number and has 3 decimal places.
+
+<img width="377" alt="sales_figures HoursOwn General" src="https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/assets/147224800/51b08da4-c5a0-4ac0-ada1-6d5f675fd4a2">
+
+I changed the entire column to number and it automatically moves the decimal to 2 decimal places.
+
+Columns HoursLease, Sales units, Turnover, and Area(m2) all have the datatype General, as well. I converted them all to Numeric datatype and eliminated the decimal for all except the HoursLease and Area column.
 
 ---
 
-In the sales_figures sheet, the Customer column doesn't have any information so it has been removed.
+The Customer column doesn't have any information so it has been removed.
 
 <img width="407" alt="sales_figures - Customer blank column" src="https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/assets/147224800/fcd052b8-b1ec-42d9-9a18-15fb0bdb112d">
 
 ---
 
-I noticed when filtering each column that the Month.Year column has “- - - -” in it. They don’t contain any other information in any other column except the 4 dashes. I also noticed that they are separated by a pretty large number, between 700 and 900 cells. I filled in the background of all 8 of these cells red and found out that they separate each of the months represented in this sheet. They are simply placement dividers.
+I noticed when filtering each column that the Month.Year column has “- - - -” in it. They don’t contain any other information in any other column except the 4 dashes. I also noticed that they are separated by a pretty large number, between 700 and 900 cells. I filled in the background of all 8 of these cells red and found out that they separate each of the months represented in this sheet. They are simply placement dividers for each month of data.
 
 <img width="510" alt="sales_figures - Month Year dashes" src="https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/assets/147224800/4b077f77-5f97-4cd3-a4bc-a161afff8bce">
 
@@ -96,7 +76,7 @@ Since there is no data for that column for that month, I deleted all rows for 06
 
 ---
 
-The Hours Own column has 2 “?”s in it. This is likely a data entry error since there is information for all the other cells that looks relevant.
+The HoursOwn column has 2 “?”s in it. This is likely a data entry error since there is information for all the other cells that looks relevant.
 
 <img width="1083" alt="sales_figures - Hours Own  ? s" src="https://github.com/PaxtonTaylor/Sales-and-Workload-In-Retail-Industry-using-Excel-and-Tableau/assets/147224800/7978a41f-4fd1-485e-b150-2e3ebca4bac0">
 
@@ -106,6 +86,35 @@ I calculated the mean for Hours Own, department 2 with the formula `=AVERAGEIF(F
 For department 6, I used the formula `=AVERAGEIF(F:F, "6",H:H)` and resulted in 10217.17.
 
 I believe this is the best way to correct data for these cells. Since they were likely entered incorrectly manually, we now have a close number that represents the mean for these 2 departments to give us an approximate correction.
+
+---
+
+Next, I want to make the datatypes match the data I'm working with instead of most being General. I made the following changes so that when I upload this into a data visualization tool later, the datatypes won't be an issue to work around in the viz tool. I also renamed the columns so that they have more consistent format
+
+sales_figures column changes:
+- Month.Year - Text
+- Time Index - Number
+- Country - Text
+- Store ID - Number
+- City - Text
+- Dept. ID - Number
+- Dept. Name - Text
+- Hours Own - Number, changed from 3 decimal places to 2
+- Hours Lease - Number, added 2 decimal places
+- Sales Units - Number
+- Turnover - Number
+- Area (m2) - Number, kept 2 decimal places
+- Opening Hours - Text
+
+opening_schemes column changes:
+- Store ID - Number
+- Store Name - Text
+- Region - Text
+- Scheme - Text
+- Month-by-month:
+  -  10.2016 through 09.2017 - All Number
+- Cumulated:
+  -  10.2016 through 09.2017 - All Number
 
 ---
 
